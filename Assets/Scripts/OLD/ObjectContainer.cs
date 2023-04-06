@@ -9,7 +9,7 @@ public class ObjectContainer : MonoBehaviour
     public bool isSeedFull;
     public GameManager gameManager;
     public Image backgroundImage;
-    public Image dirtBackgroundImage;
+    //public Image dirtBackgroundImage;
     public static ObjectContainer instance;
 
     public void Start()
@@ -30,12 +30,12 @@ public class ObjectContainer : MonoBehaviour
             backgroundImage.enabled = true;
         }
 
-        if (gameManager.draggingSeed != null && isDirtFull == true && isSeedFull == false) 
-        {
-            //isSeedFull = true;
-            gameManager.seedContainer = this.gameObject;
-            dirtBackgroundImage.enabled = true;
-        }
+        //if (gameManager.draggingSeed != null && isDirtFull == true && isSeedFull == false) 
+        //{
+        //    //isSeedFull = true;
+        //    gameManager.seedContainer = this.gameObject;
+        //    dirtBackgroundImage.enabled = true;
+        //}
     }
 
     public void OnTriggerExit2D(Collider2D collision)
@@ -43,7 +43,7 @@ public class ObjectContainer : MonoBehaviour
         gameManager.currentContainer = null;
         backgroundImage.enabled = false;
         gameManager.seedContainer = null;
-        dirtBackgroundImage.enabled = false;
+        //dirtBackgroundImage.enabled = false;
     }
 
 }

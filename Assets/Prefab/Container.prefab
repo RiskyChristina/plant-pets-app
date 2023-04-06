@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6770425824449008361}
   - component: {fileID: 5358312874488489746}
   - component: {fileID: 5960536395900300622}
+  - component: {fileID: 2024104703016106311}
   m_Layer: 9
   m_Name: Container
-  m_TagString: Untagged
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2763287292707608263}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfa78a7a7d6879842ab524877d3a3620, type: 3}
   m_Name: 
@@ -110,4 +111,20 @@ MonoBehaviour:
   isSeedFull: 0
   gameManager: {fileID: 0}
   backgroundImage: {fileID: 6770425824449008361}
-  dirtBackgroundImage: {fileID: 5597871451334401447, guid: 4b93adf2745b0784da77a43425ee0815, type: 3}
+--- !u!114 &2024104703016106311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763287292707608263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d07ba426ff935479c197c9751a5043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirt: {fileID: 6696069766752022948, guid: 0d54b46296d1ba3449d0a827ef5be21d, type: 3}
+  seed: {fileID: 3107647263861927209, guid: 8258c5ea50d59ca4cb88e589923ee979, type: 3}
+  container: {fileID: 0}
+  dirtFull: 0
+  seedFull: 0
