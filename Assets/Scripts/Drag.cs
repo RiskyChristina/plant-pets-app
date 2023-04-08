@@ -35,7 +35,7 @@ public class Drag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUp
     public Canvas canvas;
     private DirtSelection dirtSelection;
     private Item item;
-    private GameObject itemDrag;
+    public GameObject itemDrag;
 
     public void Start()
     {
@@ -53,11 +53,11 @@ public class Drag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUp
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!item.dirtFull || !item.seedFull) // check if dirt or seed can be placed
-        {
+        //if (!item.dirtFull || !item.seedFull) // check if dirt or seed can be placed
+        //{
             itemDrag = Instantiate(dirtSelection.dirtPrefab, canvas.transform);
             itemDrag.transform.position = Input.mousePosition;
-        }
+        //}
     }
 
 
