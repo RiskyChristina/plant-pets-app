@@ -11,16 +11,17 @@ public class DirtSelection : MonoBehaviour
 
     public void ButtonClicked()
     {
-        if (dirt == null) // only create a new dirt object if one doesn't exist already
-        {
+        //if (dirt == null) // only create a new dirt object if one doesn't exist already
+        //{
             dirt = Instantiate(dirtPrefab);
             dirt.tag = "Dirt";
             Debug.Log("Dirt doesnt exists!");
             dirtSelect = true;
-        }
+            SeedSelection.seedSelect = false;
+        /*}
         else
         {
             Debug.Log("Dirt already exists!");
-        }
+        }*/
     }
 }
