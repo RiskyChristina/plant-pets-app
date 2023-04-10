@@ -9,6 +9,11 @@ TagManager:
   - Seed
   - DirtDrag
   - SeedDrag
+  - Water
+  - Plant1
+  - Plant2
+  - Plant3
+  - DeadPlant
   layers:
   - Default
   - TransparentFX

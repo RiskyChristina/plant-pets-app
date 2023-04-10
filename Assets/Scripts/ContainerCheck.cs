@@ -2,41 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class ContainerCheck : MonoBehaviour
-{
-    public GameObject placeDirt;
-    public GameObject placeDirtPrefab;
-    public GameObject placeSeed;
-    public GameObject placeSeedPrefab;
-    public Canvas canvas;
-
-    private int dirt = 0;
-    private int seed = 0;*/
-
-
-/*public void ButtonClicked()
-{
-    Debug.Log(DirtSelection.dirtSelect);
-    if (DirtSelection.dirtSelect == true && dirt == 0 && seed == 0)
-    {
-        //placeDirt = Instantiate(placeDirt, canvas.transform);
-        //placeDirt.transform.parent = gameObject.transform;
-        placeDirt = GameObject.FindWithTag("Dirt");
-        Instantiate(placeDirtPrefab, this.transform);
-        dirt = 1;
-        Debug.Log(dirt);
-        //seed = 0;
-    }
-
-    if (SeedSelection.seedSelect == true && dirt == 1 && seed == 0)
-    {
-        placeSeed = GameObject.FindWithTag("Seed");
-        Instantiate(placeSeedPrefab, this.transform);
-        seed = 1;
-        Debug.Log(seed);
-    }
-}
-}*/
 
 public class ContainerCheck : MonoBehaviour
 {
@@ -44,35 +9,143 @@ public class ContainerCheck : MonoBehaviour
     public GameObject placeDirtPrefab;
     public GameObject placeSeed;
     public GameObject placeSeedPrefab;
+    public GameObject placeWater;
+    public GameObject placeWaterPrefab;
+    public GameObject placeDeadPlant;
+    public GameObject placeDeadPlantPrefab;
+    public GameObject placeSapling1;
+    public GameObject placeSapling1Prefab;
+    public GameObject placeSapling2;
+    public GameObject placeSapling2Prefab;
+    public GameObject placeSapling3;
+    public GameObject placeSapling3Prefab;
+
+
     public Canvas canvas;
+
 
     private int dirt = 0;
     private int seed = 0;
+    private float lastWaterTime;
+    private int waterCount = 0;
+    private int isDead = 0;
+    private const float MIN_WATER_INTERVAL = 1f; // 2 hours in seconds 7200
+
+
+    private bool CanWater()
+    {
+        return Time.time - lastWaterTime >= MIN_WATER_INTERVAL && waterCount < 3;
+    }
+
+
+
+
+    private void CheckPlantHealth()
+    {
+        if (isDead == 2)
+        {
+
+
+            Destroy(placeDeadPlant);
+            isDead = 0;
+        }
+
+
+        if (dirt == 1 && seed == 1)
+        {
+            if (Time.time - lastWaterTime >= 10f) // 3 hours in seconds
+            {
+                if (waterCount > 0)
+                {
+                    placeDeadPlant = Instantiate(placeDeadPlantPrefab, this.transform);
+                    Debug.Log("Plant has died!");
+                    isDead = 1;
+                    Destroy(placeSapling1);
+                    Destroy(placeSapling2);
+                    Destroy(placeSapling3);
+                }
+            }
+        }
+    }
+
 
     public void ButtonClicked()
     {
         Debug.Log(DirtSelection.dirtSelect);
-        if (DirtSelection.dirtSelect && dirt == 0 && seed == 0)
+        if (isDead == 1)
         {
-            placeDirt = GameObject.FindWithTag("Dirt");
-            Instantiate(placeDirtPrefab, this.transform);
+            dirt = 0;
+            seed = 0;
+            waterCount = 0;
+            lastWaterTime = 0f;
+            isDead = 2;
+
+
+
+
+            // Destroy all instantiated objects
+            Destroy(placeDirt);
+            Destroy(placeSeed);
+            Destroy(placeSapling1);
+            Destroy(placeSapling2);
+            Destroy(placeSapling3);
+            Destroy(placeWater);
+
+
+            Destroy(placeDeadPlant);
+
+
+
+
+
+        }
+        else if (DirtSelection.dirtSelect && dirt == 0 && seed == 0)
+        {
+            placeDirt = Instantiate(placeDirtPrefab, this.transform);
             dirt = 1;
             Debug.Log(dirt);
             Debug.Log(DirtSelection.dirtSelect);
         }
         else if (SeedSelection.seedSelect && dirt == 1 && seed == 0)
         {
-            placeSeed = GameObject.FindWithTag("Seed");
-            Instantiate(placeSeedPrefab, this.transform);
+            placeSeed = Instantiate(placeSeedPrefab, this.transform);
             seed = 1;
             Debug.Log(seed);
             Debug.Log(DirtSelection.dirtSelect);
         }
-
-        else
+        else if (dirt == 1 && seed == 1 && WaterSelection.waterSelect && CanWater())
         {
-            Debug.Log("Cannot plant seed!");
-            Debug.Log(DirtSelection.dirtSelect);
+            Debug.Log("Click watered");
+            waterCount++;
+            lastWaterTime = Time.time;
+            if (waterCount == 1 && dirt == 1 && seed == 1)
+            {
+                Destroy(placeSeed);
+                placeSapling1 = Instantiate(placeSapling1Prefab, this.transform);
+                Debug.Log("1");
+                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+            }
+            else if (waterCount == 2 && dirt == 1 && seed == 1)
+            {
+                Destroy(placeSapling1);
+                placeSapling2 = Instantiate(placeSapling2Prefab, this.transform);
+                Debug.Log("Click watered2");
+                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+            }
+            else if (waterCount == 3 && dirt == 1 && seed == 1)
+            {
+                Destroy(placeSapling2);
+                placeSapling3 = Instantiate(placeSapling3Prefab, this.transform);
+                Debug.Log("Click watered3");
+                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+            }
         }
     }
 }
+
+
+
+
+
+
+
