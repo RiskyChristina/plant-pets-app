@@ -15,5 +15,6 @@ public class SeedSelection : MonoBehaviour
             Debug.Log("Seed doesnt exists!");
             seedSelect = true;
             DirtSelection.dirtSelect = false;
+        WaterSelection.waterSelect = false;
     }
 }
