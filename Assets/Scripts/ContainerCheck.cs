@@ -90,8 +90,6 @@ public class ContainerCheck : MonoBehaviour
             Destroy(placeSapling2);
             Destroy(placeSapling3);
             Destroy(placeWater);
-
-
             Destroy(placeDeadPlant);
 
 
@@ -123,21 +121,21 @@ public class ContainerCheck : MonoBehaviour
                 Destroy(placeSeed);
                 placeSapling1 = Instantiate(placeSapling1Prefab, this.transform);
                 Debug.Log("1");
-                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+                InvokeRepeating("CheckPlantHealth", 0f, 1f);
             }
             else if (waterCount == 2 && dirt == 1 && seed == 1)
             {
                 Destroy(placeSapling1);
                 placeSapling2 = Instantiate(placeSapling2Prefab, this.transform);
                 Debug.Log("Click watered2");
-                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+                InvokeRepeating("CheckPlantHealth", 0f, 1f);
             }
             else if (waterCount == 3 && dirt == 1 && seed == 1)
             {
                 Destroy(placeSapling2);
                 placeSapling3 = Instantiate(placeSapling3Prefab, this.transform);
                 Debug.Log("Click watered3");
-                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+                InvokeRepeating("CheckPlantHealth", 0f, 1f);
             }
         }
     }
