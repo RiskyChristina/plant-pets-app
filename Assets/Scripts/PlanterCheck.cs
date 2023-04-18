@@ -12,28 +12,31 @@ public class PlanterCheck : MonoBehaviour
     public GameObject deadEmotePrefab;
 
     private int plant = 0;
-
-    public ContainerCheck containerCheckScript;
+    //private ContainerCheck containerCheck; Uncomment
 
     public void ButtonSelected() 
     {
+        //containerCheck = GameObject.FindObjectOfType<ContainerCheck>(); Uncomment
+        //int countPlantValue = containerCheck.countPlant; Uncomment
+
         if (PlantSelection.plantSelect && plant == 0) 
         {
-            //ContainerCheck.harvestedPlant--;
+            //countPlantValue--; //Uncomment when UI fixed for SeedScene
             placePlant1 = Instantiate(placePlant1Prefab, this.transform);
+            happyEmote = Instantiate(happyEmotePrefab, this.transform);
             plant = 1;
-            //Debug.Log("Number of plants harvested: " + instances.Length);
+            //Debug.Log("Number of plants planted: " + countPlantValue);
         }
     }
 
 
-    public void PlacePlant(int subPlant)
+    /*public void PlacePlant(int subPlant)
     {
-        containerCheckScript = GetComponent<ContainerCheck>();
+        containerCheck = GetComponent<ContainerCheck>();
 
         //for (int i = 0; i < containerCheckScript.countPlant[i].Length; i++) 
         //{
         //    containerCheckScript.countPlant[i] -= subPlant;
         //}
-    }
+    }*/
 }

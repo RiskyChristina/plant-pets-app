@@ -33,8 +33,8 @@ public class ContainerCheck : MonoBehaviour
     private const float MIN_WATER_INTERVAL = 1f; // 2 hours in seconds 7200
    
     public static int harvestedPlant = 0;
-    public static int countPlant;
-    private int addPlants = 0;
+    public int countPlant; //set to 0?
+    //private int addPlants = 0;
     //private static int currentPlant = 0;
 
 
@@ -157,6 +157,17 @@ public class ContainerCheck : MonoBehaviour
             HarvestedPlants.instance.textMesh.text = countPlant.ToString();
             HarvestedPlants.instance.icon.SetActive(true);
             Debug.Log("Number of plants harvested: " + countPlant);
+
+            /*if (countPlant <= 0)
+            {
+                HarvestedPlants.instance.textMesh.text = countPlant.ToString();
+                HarvestedPlants.instance.icon.SetActive(false);
+            }
+            else if (countPlant >= 1) 
+            {
+                HarvestedPlants.instance.textMesh.text = countPlant.ToString();
+                HarvestedPlants.instance.icon.SetActive(true);
+            }*/
 
         }
     }
