@@ -29,7 +29,14 @@ public class ContainerCheck : MonoBehaviour
     private float lastWaterTime;
     private int waterCount = 0;
     private int isDead = 0;
+    public float waterDuration = 2f;
     private const float MIN_WATER_INTERVAL = 1f; // 2 hours in seconds 7200
+   
+    public static int harvestedPlant = 0;
+    public static int countPlant;
+    private int addPlants = 0;
+    //private static int currentPlant = 0;
+
 
 
     private bool CanWater()
@@ -37,15 +44,10 @@ public class ContainerCheck : MonoBehaviour
         return Time.time - lastWaterTime >= MIN_WATER_INTERVAL && waterCount < 3;
     }
 
-
-
-
     private void CheckPlantHealth()
     {
-        if (isDead == 2)
+        if (isDead == 1)
         {
-
-
             Destroy(placeDeadPlant);
             isDead = 0;
         }
@@ -72,7 +74,7 @@ public class ContainerCheck : MonoBehaviour
     public void ButtonClicked()
     {
         Debug.Log(DirtSelection.dirtSelect);
-        if (isDead == 1)
+        if (DeadPlantSelection.deadPlantSelect && isDead == 1)
         {
             dirt = 0;
             seed = 0;
@@ -80,20 +82,14 @@ public class ContainerCheck : MonoBehaviour
             lastWaterTime = 0f;
             isDead = 2;
 
-
-
-
             // Destroy all instantiated objects
+            Destroy(placeDeadPlant);
             Destroy(placeDirt);
             Destroy(placeSeed);
             Destroy(placeSapling1);
             Destroy(placeSapling2);
             Destroy(placeSapling3);
             Destroy(placeWater);
-            Destroy(placeDeadPlant);
-
-
-
 
 
         }
@@ -119,31 +115,65 @@ public class ContainerCheck : MonoBehaviour
             if (waterCount == 1 && dirt == 1 && seed == 1)
             {
                 Destroy(placeSeed);
+                placeWater = Instantiate(placeWaterPrefab, this.transform);
+                Destroy(placeWater, waterDuration);
                 placeSapling1 = Instantiate(placeSapling1Prefab, this.transform);
                 Debug.Log("1");
-                InvokeRepeating("CheckPlantHealth", 0f, 1f);
+                InvokeRepeating("CheckPlantHealth", 0f, 5f);
             }
             else if (waterCount == 2 && dirt == 1 && seed == 1)
             {
                 Destroy(placeSapling1);
                 placeSapling2 = Instantiate(placeSapling2Prefab, this.transform);
+                placeWater = Instantiate(placeWaterPrefab, this.transform);
+                Destroy(placeWater, waterDuration);
+
+
                 Debug.Log("Click watered2");
-                InvokeRepeating("CheckPlantHealth", 0f, 1f);
+                InvokeRepeating("CheckPlantHealth", 0f, 5f);
             }
             else if (waterCount == 3 && dirt == 1 && seed == 1)
             {
                 Destroy(placeSapling2);
                 placeSapling3 = Instantiate(placeSapling3Prefab, this.transform);
                 Debug.Log("Click watered3");
-                InvokeRepeating("CheckPlantHealth", 0f, 1f);
+                placeWater = Instantiate(placeWaterPrefab, this.transform);
+                Destroy(placeWater, waterDuration);
+                InvokeRepeating("CheckPlantHealth", 0f, 5f);
             }
+
+        }
+        else if (RepotSelection.repotSelect && dirt == 1 && seed == 1 && waterCount == 3)
+        {
+            //AddPlant(harvestedPlant);
+            Debug.Log("Plant harvested!");
+            Destroy(placeSapling3);
+            Destroy(placeDirt);
+            waterCount = 0;
+            lastWaterTime = 0f;
+            isDead = 0;
+            seed = 0;
+            countPlant++;
+            HarvestedPlants.instance.textMesh.text = countPlant.ToString();
+            HarvestedPlants.instance.icon.SetActive(true);
+            Debug.Log("Number of plants harvested: " + countPlant);
+
         }
     }
+
+    /*public void AddPlant(int harvestedPlant) 
+    {
+        //harvestedPlant++;
+
+        countPlant = new int[harvestedPlant];
+        for (int i = 0; i < countPlant.Length; i++) 
+        {
+            //instances[i] = Instantiate(placeSapling3Prefab, this.transform);
+            //instances[i].SetActive(false);
+            countPlant[i] += harvestedPlant;
+        }
+        Debug.Log("Number of plants harvested: " + countPlant.Length);
+
+    }*/
 }
-
-
-
-
-
-
 

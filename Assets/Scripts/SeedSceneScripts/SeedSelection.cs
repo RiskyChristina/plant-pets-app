@@ -10,11 +10,13 @@ public class SeedSelection : MonoBehaviour
 
     public void ButtonClicked()
     {
-            seed = Instantiate(seedPrefab);
-            seed.tag = "Seed";
-            Debug.Log("Seed doesnt exists!");
-            seedSelect = true;
-            DirtSelection.dirtSelect = false;
+        seed = Instantiate(seedPrefab);
+        seed.tag = "Seed";
+        Debug.Log("Seed doesnt exists!");
+        seedSelect = true;
+        DirtSelection.dirtSelect = false;
         WaterSelection.waterSelect = false;
+        RepotSelection.repotSelect = false;
+        DeadPlantSelection.deadPlantSelect = false;
     }
 }
