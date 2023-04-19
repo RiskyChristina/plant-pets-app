@@ -152,10 +152,10 @@ public class ContainerCheck : MonoBehaviour
             lastWaterTime = 0f;
             isDead = 0;
             seed = 0;
-            countPlant++;
-            //HarvestedPlants.instance.textMesh.text = countPlant.ToString();
-            //HarvestedPlants.instance.icon.SetActive(true);
-            Debug.Log("Number of plants harvested: " + countPlant);
+            HarvestedPlants.instance.harvestedPlants++;
+            HarvestedPlants.instance.textMesh.text = HarvestedPlants.instance.harvestedPlants.ToString();
+            HarvestedPlants.instance.icon.SetActive(true);
+            Debug.Log("Number of plants harvested: " + HarvestedPlants.instance.harvestedPlants);
 
 
         }

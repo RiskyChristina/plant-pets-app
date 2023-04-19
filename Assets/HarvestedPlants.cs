@@ -9,15 +9,13 @@ public class HarvestedPlants : MonoBehaviour
     public static HarvestedPlants instance;
     public TextMeshProUGUI textMesh;
     public GameObject icon;
-    public int harvestedPlants;
+    public int harvestedPlants =0;
     // Start is called before the first frame update
     void Start()
     {
         if(instance==null)
         {
             instance = this;
-            icon = transform.GetComponentInChildren<Image>().gameObject;
-            textMesh = transform.GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 
