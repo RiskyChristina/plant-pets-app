@@ -145,7 +145,6 @@ public class ContainerCheck : MonoBehaviour
         }
         else if (RepotSelection.repotSelect && dirt == 1 && seed == 1 && waterCount == 3)
         {
-            //AddPlant(harvestedPlant);
             Debug.Log("Plant harvested!");
             Destroy(placeSapling3);
             Destroy(placeDirt);
@@ -154,37 +153,13 @@ public class ContainerCheck : MonoBehaviour
             isDead = 0;
             seed = 0;
             countPlant++;
-            HarvestedPlants.instance.textMesh.text = countPlant.ToString();
-            HarvestedPlants.instance.icon.SetActive(true);
+            //HarvestedPlants.instance.textMesh.text = countPlant.ToString();
+            //HarvestedPlants.instance.icon.SetActive(true);
             Debug.Log("Number of plants harvested: " + countPlant);
 
-            /*if (countPlant <= 0)
-            {
-                HarvestedPlants.instance.textMesh.text = countPlant.ToString();
-                HarvestedPlants.instance.icon.SetActive(false);
-            }
-            else if (countPlant >= 1) 
-            {
-                HarvestedPlants.instance.textMesh.text = countPlant.ToString();
-                HarvestedPlants.instance.icon.SetActive(true);
-            }*/
 
         }
     }
 
-    /*public void AddPlant(int harvestedPlant) 
-    {
-        //harvestedPlant++;
-
-        countPlant = new int[harvestedPlant];
-        for (int i = 0; i < countPlant.Length; i++) 
-        {
-            //instances[i] = Instantiate(placeSapling3Prefab, this.transform);
-            //instances[i].SetActive(false);
-            countPlant[i] += harvestedPlant;
-        }
-        Debug.Log("Number of plants harvested: " + countPlant.Length);
-
-    }*/
 }
 

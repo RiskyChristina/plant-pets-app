@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4470027505786637634}
   - component: {fileID: 5673834852239289590}
   m_Layer: 0
-  m_Name: DeadEmote
+  m_Name: EmoteDead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
