@@ -28,9 +28,9 @@ public class PlanterCheck : MonoBehaviour
     private float lastWaterTime;
     private int waterCount = 0;
     public float waterDuration = 2f;
-    private const float MIN_WATER_INTERVAL = 5f; // 2 hours in seconds 7200
+    private const float MIN_WATER_INTERVAL = 30f; // 2 hours in seconds 7200
     private int isDead = 0;
-    public float emoteDuration = 5f;
+    public float emoteDuration = 30f;
 
     //private ContainerCheck containerCheck; //Uncomment
 
@@ -49,7 +49,7 @@ public class PlanterCheck : MonoBehaviour
 
         if (plant == 1)
         {
-            if (Time.time - lastWaterTime >= 10f) // 3 hours in seconds
+            if (Time.time - lastWaterTime >= 180f) // 3 hours in seconds
             {
                 if (waterCount >= 0)
                 {
@@ -96,7 +96,7 @@ public class PlanterCheck : MonoBehaviour
 
                 Destroy(happyEmote);
                 happy2Emote = Instantiate(happy2EmotePrefab, this.transform);
-                Destroy(happy2Emote, emoteDuration);
+                //Destroy(happy2Emote, emoteDuration);
 
                 StartCoroutine(Delay());
 
@@ -115,7 +115,7 @@ public class PlanterCheck : MonoBehaviour
                 Destroy(placeWater, waterDuration);
 
                 happy2Emote = Instantiate(happy2EmotePrefab, this.transform);
-                Destroy(happy2Emote, emoteDuration);
+                //Destroy(happy2Emote, emoteDuration);
                 StartCoroutine(Delay());
 
 
@@ -139,8 +139,9 @@ public class PlanterCheck : MonoBehaviour
     IEnumerator Delay()
     {
         // Wait for 5 seconds
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(30);
         happyEmote = Instantiate(happyEmotePrefab, this.transform);
+        Destroy(happy2Emote, emoteDuration);
 
         // Code to execute after the delay
         Debug.Log("Delayed code executed!");

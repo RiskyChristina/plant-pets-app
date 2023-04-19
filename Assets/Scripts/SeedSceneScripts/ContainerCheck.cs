@@ -55,7 +55,7 @@ public class ContainerCheck : MonoBehaviour
 
         if (dirt == 1 && seed == 1)
         {
-            if (Time.time - lastWaterTime >= 10f) // 3 hours in seconds
+            if (Time.time - lastWaterTime >= 120f) // 3 hours in seconds
             {
                 if (waterCount > 0)
                 {
