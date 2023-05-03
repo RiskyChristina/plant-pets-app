@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Information.unity
     guid: 848e3645c2d9fa842a80d7362ecf2502
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ProtoPlants.unity
     guid: fab69944ebba109438367ae4705e8cc0
   - enabled: 1

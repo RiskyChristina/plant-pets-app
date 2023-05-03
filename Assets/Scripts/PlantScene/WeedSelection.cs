@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterSelection : MonoBehaviour
+public class WeedSelection : MonoBehaviour
 {
-    public GameObject waterPrefab;
-    public static GameObject water;
-    static public bool waterSelect = false;
+    static public bool weedSelect = false;
 
     public void ButtonClicked()
     {
-        water = Instantiate(waterPrefab);
-        water.tag = "Water";
-        Debug.Log("Dirt doesnt exists!");
-        waterSelect = true;
+        weedSelect = true;
         SeedSelection.seedSelect = false;
         DirtSelection.dirtSelect = false;
         RepotSelection.repotSelect = false;
         DeadPlantSelection.deadPlantSelect = false;
         PlantSelection.plantSelect = false;
-        WeedSelection.weedSelect = false;
+        WaterSelection.waterSelect = false;
     }
 }

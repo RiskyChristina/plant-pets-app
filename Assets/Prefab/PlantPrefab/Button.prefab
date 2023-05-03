@@ -288,6 +288,10 @@ MonoBehaviour:
   placePlant2Prefab: {fileID: 3976037049743107208, guid: ccf1ac4b35f54cc438b79a9681a8c5c8, type: 3}
   placePlant3: {fileID: 0}
   placePlant3Prefab: {fileID: 3076687614053307041, guid: fb6520f3ac39b49448730efe718b86c1, type: 3}
+  placePlant4: {fileID: 0}
+  placePlant4Prefab: {fileID: 7140928853411718852, guid: 414168b9765af9a45881eadcec3be32f, type: 3}
+  placeReplant: {fileID: 0}
+  placeReplantPrefab: {fileID: 7140928853411718852, guid: 414168b9765af9a45881eadcec3be32f, type: 3}
   placeDeadPlant: {fileID: 0}
   placeDeadPlantPrefab: {fileID: 4201737961570288521, guid: 43c015a82d0aee6469a09f364d791010, type: 3}
   placeWater: {fileID: 0}
@@ -298,5 +302,9 @@ MonoBehaviour:
   deadEmotePrefab: {fileID: 2684259744524021617, guid: 0b68f64c83a47464688922edf350ae5d, type: 3}
   happy2Emote: {fileID: 0}
   happy2EmotePrefab: {fileID: 9151678006036372257, guid: 3c7cb867ff180f74094e280dd181bb46, type: 3}
+  placeWeed: {fileID: 0}
+  placeWeedPrefab: {fileID: 6634414300434009291, guid: db2f3df5dd78f2144a219236e38c465e, type: 3}
   waterDuration: 2
-  emoteDuration: 5
+  switchTime: 10
+  minSpawnTime: 5
+  maxSpawnTime: 10

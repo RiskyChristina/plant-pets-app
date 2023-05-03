@@ -26,22 +26,24 @@ public class ContainerCheck : MonoBehaviour
 
     private int dirt = 0;
     private int seed = 0;
-    private float lastWaterTime;
+    private float lastWaterTime = 0;
     private int waterCount = 0;
     private int isDead = 0;
     public float waterDuration = 2f;
-    private const float MIN_WATER_INTERVAL = 1f; // 2 hours in seconds 7200
-   
-    public static int harvestedPlant = 0;
-    public int countPlant; //set to 0?
-    //private int addPlants = 0;
-    //private static int currentPlant = 0;
+    private const float MIN_WATER_INTERVAL = 30f; // 2 hours in seconds 7200
 
+    private bool firstWater = false; 
 
-
+    
     private bool CanWater()
     {
-        return Time.time - lastWaterTime >= MIN_WATER_INTERVAL && waterCount < 3;
+            //return Time.time - lastWaterTime <= firstWaterTime;
+            if(firstWater == true)
+            {
+                return Time.time - lastWaterTime >= MIN_WATER_INTERVAL && waterCount < 3 && isDead != 1;
+            }
+        
+            return true;
     }
 
     private void CheckPlantHealth()
@@ -55,7 +57,7 @@ public class ContainerCheck : MonoBehaviour
 
         if (dirt == 1 && seed == 1)
         {
-            if (Time.time - lastWaterTime >= 120f) // 3 hours in seconds
+            if (Time.time - lastWaterTime >= 10f) // 3 hours in seconds
             {
                 if (waterCount > 0)
                 {
@@ -112,6 +114,8 @@ public class ContainerCheck : MonoBehaviour
             Debug.Log("Click watered");
             waterCount++;
             lastWaterTime = Time.time;
+            firstWater = true;
+
             if (waterCount == 1 && dirt == 1 && seed == 1)
             {
                 Destroy(placeSeed);
@@ -120,6 +124,7 @@ public class ContainerCheck : MonoBehaviour
                 placeSapling1 = Instantiate(placeSapling1Prefab, this.transform);
                 Debug.Log("1");
                 InvokeRepeating("CheckPlantHealth", 0f, 5f);
+                //lastWaterTime = Time.time - firstWaterTime; //delete
             }
             else if (waterCount == 2 && dirt == 1 && seed == 1)
             {

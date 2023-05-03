@@ -17,5 +17,8 @@ public class DeadPlantSelection : MonoBehaviour
         SeedSelection.seedSelect = false;
         DirtSelection.dirtSelect = false;
         RepotSelection.repotSelect = false;
+        WaterSelection.waterSelect = false;
+        PlantSelection.plantSelect = false;
+        WeedSelection.weedSelect = false;
     }
 }

@@ -9,5 +9,11 @@ public class PlantSelection : MonoBehaviour
     {
         Debug.Log("Plant Selected");
         plantSelect = true;
+        SeedSelection.seedSelect = false;
+        DirtSelection.dirtSelect = false;
+        RepotSelection.repotSelect = false;
+        WaterSelection.waterSelect = false;
+        DeadPlantSelection.deadPlantSelect = false;
+        WeedSelection.weedSelect = false;
     }
 }
