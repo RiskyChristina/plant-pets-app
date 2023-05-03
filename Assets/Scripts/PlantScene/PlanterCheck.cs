@@ -43,10 +43,11 @@ public class PlanterCheck : MonoBehaviour
     public float minSpawnTime = 60f;
     public float maxSpawnTime = 300f;
 
-    /*public void Start()
+    public void Start()
     {
-        InvokeRepeating("SpawnWeeds", Random.Range(minSpawnTime, maxSpawnTime), Random.Range(minSpawnTime, maxSpawnTime));
-    }*/
+        //InvokeRepeating("SpawnWeeds", Random.Range(minSpawnTime, maxSpawnTime), Random.Range(minSpawnTime, maxSpawnTime));
+
+    }
     private bool CanWater()
     {
         if (firstWater == true)
@@ -60,15 +61,12 @@ public class PlanterCheck : MonoBehaviour
 
     private void CheckPlantHealth()
     {
-        isDead = false;
-        if (isDead == true)
-        {
-            //Destroy(placeDeadPlant);
-            isDead = false;
-        }
 
         Debug.Log("before dead " + isDead);
-        if (plant == 1 && Time.time - lastWaterTime >= 5f && waterCount > 0 && isDead == false)
+        Debug.Log(Time.time - lastWaterTime);
+        Debug.Log(waterCount);
+
+        if (plant == 1 && lastWaterTime != 0 && Time.time - lastWaterTime >= 5f && waterCount > 0 && isDead == false)
         {
             /*if (Time.time - lastWaterTime >= 5f) // 3 hours in seconds
             {
@@ -101,20 +99,20 @@ public class PlanterCheck : MonoBehaviour
 
     public void ButtonSelected()
     {
-
+        Debug.Log("ButtonSelected");
         if (DeadPlantSelection.deadPlantSelect && isDead == true)
         {
             Debug.Log("Plant reset");
             plant = 0;
             waterCount = 0;
-            lastWaterTime = Time.time;
+            lastWaterTime = 0;
             isDead = false;
             Debug.Log("isDead " + isDead);
             Debug.Log("watercount " + waterCount);
             Debug.Log("plant " + plant);
             Debug.Log("last water time " + lastWaterTime);
             CancelInvoke("SpawnWeeds"); //uncomment
-
+            CancelInvoke("CheckPlantHealth");
             // Destroy all instantiated objects
             Destroy(deadEmote);
             //Destroy(placeDeadPlant);
@@ -127,12 +125,11 @@ public class PlanterCheck : MonoBehaviour
             Destroy(happy2Emote);
             Destroy(placeWater);
             Destroy(placeWeed);
-        }
-
-        if (PlantSelection.plantSelect && plant == 0)
+        } else if (PlantSelection.plantSelect && plant == 0)
         {
-            HarvestedPlants.instance.harvestedPlants--;
 
+            InvokeRepeating("CheckPlantHealth", 5f, 5f);
+            HarvestedPlants.instance.harvestedPlants--;
 
             HarvestedPlants.instance.textMesh.text = HarvestedPlants.instance.harvestedPlants.ToString();
             HarvestedPlants.instance.icon.SetActive(HarvestedPlants.instance.harvestedPlants != 0);
@@ -141,10 +138,7 @@ public class PlanterCheck : MonoBehaviour
             plant = 1;
             waterCount++;
             //Debug.Log("Number of plants planted: " + countPlantValue);
-        }
-
-
-        else if (plant == 1 && WaterSelection.waterSelect && CanWater())
+        } else if (plant == 1 && WaterSelection.waterSelect && CanWater())
         {
             InvokeRepeating("SpawnWeeds", Random.Range(minSpawnTime, maxSpawnTime), Random.Range(minSpawnTime, maxSpawnTime)); //uncomment
             Debug.Log("Click watered");
@@ -162,7 +156,6 @@ public class PlanterCheck : MonoBehaviour
                 Destroy(placeWater, waterDuration);
                 placePlant4 = Instantiate(placePlant4Prefab, this.transform);
                 Debug.Log("1");
-                InvokeRepeating("CheckPlantHealth", 0f, 5f);
             }
             else if (waterCount == 3 && plant == 1)
             {
@@ -174,7 +167,7 @@ public class PlanterCheck : MonoBehaviour
                 placeWater = Instantiate(placeWaterPrefab, this.transform);
                 Destroy(placeWater, waterDuration);
                 Debug.Log("Click watered2");
-                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+                //InvokeRepeating("CheckPlantHealth", 0f, 5f);
             }
             else if (waterCount == 4 && plant == 1)
             {
@@ -185,7 +178,7 @@ public class PlanterCheck : MonoBehaviour
                 placeWater = Instantiate(placeWaterPrefab, this.transform);
                 Destroy(placeWater, waterDuration);
                 Debug.Log("Click watered2");
-                InvokeRepeating("CheckPlantHealth", 0f, 5f);
+                //InvokeRepeating("CheckPlantHealth", 0f, 5f);
             }
         }
 
