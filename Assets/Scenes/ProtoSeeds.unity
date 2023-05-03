@@ -12833,7 +12833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000022888184, y: 163.00018}
+  m_AnchoredPosition: {x: -0.000022888184, y: 163}
   m_SizeDelta: {x: 867.2094, y: 159.40161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &605884324
@@ -25236,7 +25236,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &1074488229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25984,6 +25983,18 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 874001562}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 928003116}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -29387,7 +29398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000022888184, y: 163.00018}
+  m_AnchoredPosition: {x: -0.000022888184, y: 163}
   m_SizeDelta: {x: 867.2094, y: 159.40161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1260953347
@@ -39411,7 +39422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25.999756, y: -197.40039}
+  m_AnchoredPosition: {x: -26, y: -197.40039}
   m_SizeDelta: {x: 161.20935, y: 159.40161}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1702806593
@@ -39519,6 +39530,18 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 874001562}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 928003116}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -44647,7 +44670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1628678418}
   icon: {fileID: 1719218236}
-  harvestedPlants: 2
+  harvestedPlants: 4
 --- !u!114 &1963193062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47947,7 +47970,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &4909774684563337095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48111,7 +48133,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &4909774684628006615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48605,7 +48626,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!1 &4909774685489214096
 GameObject:
   m_ObjectHideFlags: 0
@@ -48946,7 +48966,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &4909774685618462443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49207,7 +49226,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!1 &4909774685671823064
 GameObject:
   m_ObjectHideFlags: 0
@@ -49548,7 +49566,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &4909774685796367011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49712,7 +49729,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &4909774685970893563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50150,7 +50166,6 @@ MonoBehaviour:
   placeSapling3Prefab: {fileID: 825615563132925079, guid: 679a7d377fd43bf449ba7809d38b1508, type: 3}
   canvas: {fileID: 0}
   waterDuration: 1
-  countPlant: 0
 --- !u!114 &4909774686330627619
 MonoBehaviour:
   m_ObjectHideFlags: 0
