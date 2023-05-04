@@ -250,9 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea6a10a90a114f459443e83d26866bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeInUpdate: 1
-  anchorType: 4
-  anchorOffset: {x: 140.51, y: 250.2, z: 0}
 --- !u!114 &120382392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +272,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 10149a8d589635a4ea872adb0722fa12, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -685,9 +682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea6a10a90a114f459443e83d26866bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeInUpdate: 1
-  anchorType: 7
-  anchorOffset: {x: 140.1, y: -394.44, z: 0}
 --- !u!1 &339443188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,11 +1027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd708452906467943b2c4d150e7c312d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wireColor: {r: 1, g: 1, b: 1, a: 1}
-  UnitsSize: 17
-  constraint: 1
-  camera: {fileID: 1224510982}
-  executeInUpdate: 1
 --- !u!1 &1451658108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1772928863
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1129,9 +1118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea6a10a90a114f459443e83d26866bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeInUpdate: 1
-  anchorType: 7
-  anchorOffset: {x: 140.1, y: -633.6, z: 0}
 --- !u!114 &1772928865
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -44670,7 +44670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1628678418}
   icon: {fileID: 1719218236}
-  harvestedPlants: 4
+  harvestedPlants: 0
 --- !u!114 &1963193062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44686,7 +44686,7 @@ MonoBehaviour:
   textMesh: {fileID: 1603424867}
   icon: {fileID: 663498818}
   achievIcon: {fileID: 1871284960}
-  harvestedTomato: 8
+  harvestedTomato: 0
 --- !u!1 &1973253183
 GameObject:
   m_ObjectHideFlags: 0
