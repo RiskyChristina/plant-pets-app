@@ -30,7 +30,7 @@ public class ContainerCheck : MonoBehaviour
     private int waterCount = 0;
     private int isDead = 0;
     public float waterDuration = 2f;
-    private const float MIN_WATER_INTERVAL = 180f; // 2 hours in seconds 7200
+    private const float MIN_WATER_INTERVAL = 5f; // 2 hours in seconds 7200
 
     private bool firstWater = false; 
 
@@ -57,7 +57,7 @@ public class ContainerCheck : MonoBehaviour
 
         if (dirt == 1 && seed == 1)
         {
-            if (Time.time - lastWaterTime >= 600f) // 3 hours in seconds
+            if (Time.time - lastWaterTime >= 30f) // 3 hours in seconds
             {
                 if (waterCount > 0)
                 {

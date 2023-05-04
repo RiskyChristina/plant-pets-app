@@ -36,14 +36,14 @@ public class PlanterCheck : MonoBehaviour
     private float lastWaterTime;
     private int waterCount = 0;
     public float waterDuration = 2f;
-    private const float MIN_WATER_INTERVAL = 420f; // 2 hours in seconds 7200
+    private const float MIN_WATER_INTERVAL = 10f; // 2 hours in seconds 7200
     private bool isDead = false;
     public static int harvestedTomato = 0;
     private bool firstWater = false;
     private int harvestCount = 0;
-    public float switchTime = 210f; //10f
-    public float minSpawnTime = 180f;
-    public float maxSpawnTime = 1800f;
+    public float switchTime = 5f; //10f
+    public float minSpawnTime = 30f;
+    public float maxSpawnTime = 60f;
 
     public bool weedPresent = false; 
 
@@ -70,7 +70,7 @@ public class PlanterCheck : MonoBehaviour
         Debug.Log(Time.time - lastWaterTime);
         Debug.Log(waterCount);
 
-        if (plant == 1 && lastWaterTime != 0 && Time.time - lastWaterTime >= 1800f && waterCount > 0 && isDead == false)
+        if (plant == 1 && lastWaterTime != 0 && Time.time - lastWaterTime >= 30f && waterCount > 0 && isDead == false)
         {
             /*if (Time.time - lastWaterTime >= 5f) // 3 hours in seconds
             {
