@@ -304,9 +304,12 @@ MonoBehaviour:
   happy2EmotePrefab: {fileID: 9151678006036372257, guid: 3c7cb867ff180f74094e280dd181bb46, type: 3}
   uncomfyEmote: {fileID: 0}
   uncomfyEmotePrefab: {fileID: 3922887880510871596, guid: d775cc760ff972c4bb9ae734bf8d48a3, type: 3}
+  thirstyEmote: {fileID: 0}
+  thirstyEmotePrefab: {fileID: 4450758720779672931, guid: 73593a6ebd8fcce458469caa5d6ecd6d, type: 3}
   placeWeed: {fileID: 0}
   placeWeedPrefab: {fileID: 6634414300434009291, guid: db2f3df5dd78f2144a219236e38c465e, type: 3}
   waterDuration: 2
   switchTime: 10
   minSpawnTime: 5
   maxSpawnTime: 10
+  weedPresent: 0

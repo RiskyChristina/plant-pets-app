@@ -27,6 +27,8 @@ public class PlanterCheck : MonoBehaviour
     public GameObject happy2EmotePrefab;
     public GameObject uncomfyEmote;
     public GameObject uncomfyEmotePrefab;
+    public GameObject thirstyEmote;
+    public GameObject thirstyEmotePrefab;
     public GameObject placeWeed;
     public GameObject placeWeedPrefab;
 
@@ -36,14 +38,14 @@ public class PlanterCheck : MonoBehaviour
     private float lastWaterTime;
     private int waterCount = 0;
     public float waterDuration = 2f;
-    private const float MIN_WATER_INTERVAL = 420f; // 2 hours in seconds 7200
+    private const float MIN_WATER_INTERVAL = 10f; // 2 hours in seconds 7200
     private bool isDead = false;
     public static int harvestedTomato = 0;
     private bool firstWater = false;
     private int harvestCount = 0;
-    public float switchTime = 210f; //10f
-    public float minSpawnTime = 180f;
-    public float maxSpawnTime = 1800f;
+    public float switchTime = 5f; //10f
+    public float minSpawnTime = 30f;
+    public float maxSpawnTime = 60f;
 
     public bool weedPresent = false; 
 
@@ -70,26 +72,18 @@ public class PlanterCheck : MonoBehaviour
         Debug.Log(Time.time - lastWaterTime);
         Debug.Log(waterCount);
 
-        if (plant == 1 && lastWaterTime != 0 && Time.time - lastWaterTime >= 1800f && waterCount > 0 && isDead == false)
+        if (plant == 1 && lastWaterTime != 0 && Time.time - lastWaterTime >= 30f && waterCount > 0 && isDead == false)
         {
-            /*if (Time.time - lastWaterTime >= 5f) // 3 hours in seconds
-            {
-                if (waterCount > 0 && isDead == false)
-                {*/
-                    isDead = true;
-                    DestroyPlantPrefabs();
+            isDead = true;
+            CancelInvoke("SpawnWeeds");
+            DestroyPlantPrefabs();
                     DestroyEmotionPrefabs();
                     Destroy(placeWeed);
-
-
-                    //placeDeadPlant = Instantiate(placeDeadPlantPrefab, this.transform);
-                    deadEmote = Instantiate(deadEmotePrefab, this.transform);
-                    Debug.Log("Plant has died!");
-                    //isDead = true;
-                    //lastWaterTime = 0f;
-                //}
-            //}
+            deadEmote = Instantiate(deadEmotePrefab, this.transform);
+            Debug.Log("Plant has died!");
         }
+
+        //Thirsty();
     }
 
 
@@ -135,6 +129,7 @@ public class PlanterCheck : MonoBehaviour
             HarvestedPlants.instance.icon.SetActive(HarvestedPlants.instance.harvestedPlants != 0);
             DestroyPlantPrefabs();
             DestroyEmotionPrefabs();
+            Destroy(placeWeed);
             placePlant1 = Instantiate(placePlant1Prefab, this.transform);
             happyEmote = Instantiate(happyEmotePrefab, this.transform);
             plant = 1;
@@ -142,8 +137,11 @@ public class PlanterCheck : MonoBehaviour
             //Debug.Log("Number of plants planted: " + countPlantValue);
         } else if (plant == 1 && WaterSelection.waterSelect && CanWater())
         {
-            
-            InvokeRepeating("SpawnWeeds", Random.Range(minSpawnTime, maxSpawnTime), Random.Range(minSpawnTime, maxSpawnTime)); //uncomment
+
+            //InvokeRepeating("SpawnWeeds", Random.Range(minSpawnTime, maxSpawnTime), Random.Range(minSpawnTime, maxSpawnTime)); //uncomment
+            float randomSpawnTime = Random.value > 0.5f ? 30f : 60f;
+            Invoke("SpawnWeeds", randomSpawnTime);
+            Debug.Log("spawn time " + randomSpawnTime);
             
             Debug.Log("Click watered");
             waterCount++;
@@ -152,8 +150,11 @@ public class PlanterCheck : MonoBehaviour
             isDead = false;
             if (waterCount == 2 && plant == 1)
             {
-                SwitchHappy2Prefab();
                 DestroyPlantPrefabs();
+                DestroyEmotionPrefabs();
+                SwitchHappy2Prefab();
+                //Thirsty();
+                
 
 
                 placeWater = Instantiate(placeWaterPrefab, this.transform);
@@ -163,8 +164,11 @@ public class PlanterCheck : MonoBehaviour
             }
             else if (waterCount == 3 && plant == 1)
             {
-                SwitchHappy2Prefab();
                 DestroyPlantPrefabs();
+                DestroyEmotionPrefabs();
+                SwitchHappy2Prefab();
+                //Thirsty();
+                
 
                 placePlant2 = Instantiate(placePlant2Prefab, this.transform);
                 placeWater = Instantiate(placeWaterPrefab, this.transform);
@@ -174,8 +178,11 @@ public class PlanterCheck : MonoBehaviour
             }
             else if (waterCount == 4 && plant == 1)
             {
-                SwitchHappy2Prefab();
                 DestroyPlantPrefabs();
+                DestroyEmotionPrefabs();
+                SwitchHappy2Prefab();
+                //Thirsty();
+                
 
                 placePlant3 = Instantiate(placePlant3Prefab, this.transform);
                 placeWater = Instantiate(placeWaterPrefab, this.transform);
@@ -197,8 +204,10 @@ public class PlanterCheck : MonoBehaviour
                 HarvestedTomato.instance.icon.SetActive(true);
                 Debug.Log("Number of Tomato harvested: " + HarvestedTomato.instance.harvestedTomato);
                 DestroyPlantPrefabs();
+                DestroyEmotionPrefabs();
+                //Destroy(placeWeed);
                 //Destroy(happy2Emote);
-                //happyEmote = Instantiate(happyEmotePrefab, this.transform);
+                happyEmote = Instantiate(happyEmotePrefab, this.transform);
                 placeReplant = Instantiate(placeReplantPrefab, this.transform);
                 waterCount = 2;
                 harvestCount++;
@@ -206,9 +215,13 @@ public class PlanterCheck : MonoBehaviour
                 {
                     DestroyPlantPrefabs();
                     DestroyEmotionPrefabs();
+                    Destroy(placeWeed);
+                    //happyEmote = Instantiate(happyEmotePrefab, this.transform);
                     harvestCount = 0;
                     waterCount = 0;
                     plant = 0;
+                    CancelInvoke("SpawnWeeds");
+                    CancelInvoke("CheckPlantHealth");
                 }
                 if (HarvestedTomato.instance.harvestedTomato >= 10)
                 {
@@ -224,26 +237,45 @@ public class PlanterCheck : MonoBehaviour
 
     private void SpawnWeeds()
     {
-        DestroyEmotionPrefabs();
         if(weedPresent == false)
         {
             placeWeed = Instantiate(placeWeedPrefab, this.transform);
             weedPresent = true;
         }
-        
+
+        DestroyEmotionPrefabs();
         uncomfyEmote = Instantiate(uncomfyEmotePrefab, this.transform);
     }
 
-    private void SwitchHappy2Prefab()
+    public void SwitchHappy2Prefab()
     {
         DestroyEmotionPrefabs();
         happy2Emote = Instantiate(happy2EmotePrefab, this.transform);
         Invoke("SwitchBackHappyPrefab", switchTime);
     }
-    private void SwitchBackHappyPrefab()
+    public void SwitchBackHappyPrefab()
     {
-        DestroyEmotionPrefabs();
-        happyEmote = Instantiate(happyEmotePrefab, this.transform);
+        if (weedPresent == true)
+        {
+            DestroyEmotionPrefabs();
+            uncomfyEmote = Instantiate(uncomfyEmotePrefab, this.transform);
+        }
+        else if (weedPresent == false)
+        {
+            DestroyEmotionPrefabs();
+            happyEmote = Instantiate(happyEmotePrefab, this.transform);
+        }
+    }
+
+    public void Thirsty() 
+    {
+        if (MIN_WATER_INTERVAL >= lastWaterTime && isDead == false) 
+        {
+            DestroyEmotionPrefabs();
+            thirstyEmote = Instantiate(thirstyEmotePrefab, this.transform);
+
+        }
+        Debug.Log("thirsty");
     }
 
     public void DestroyEmotionPrefabs() 
@@ -252,6 +284,7 @@ public class PlanterCheck : MonoBehaviour
         Destroy(happy2Emote);;
         Destroy(uncomfyEmote);
         Destroy(deadEmote);
+        Destroy(thirstyEmote);
     }
 
     public void DestroyPlantPrefabs()
